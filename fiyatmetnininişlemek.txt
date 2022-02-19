@@ -1,0 +1,17 @@
+<script>
+    function scrolled() {
+        if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
+            $.getJSON("/Home/Next", function (data) {
+                var div = document.getElementById('myDiv');
+
+                // Append the returned data to the current list of hotels.
+                for (var i = 0; i < data.length; i += 4) {
+                    div.innerHTML += '\n<textarea class="box1A">' + data[i] + '</textarea>';
+                    div.innerHTML += '\n<textarea class="box1B">' + data[i + 1] + '</textarea>';
+                    div.innerHTML += '\n<textarea class="box2A">' + data[i + 2] + '</textarea>';
+                    div.innerHTML += '\n<textarea class="box3">' + data[i + 4] + '</textarea>';
+                }
+            });
+        }
+    }
+</script>
